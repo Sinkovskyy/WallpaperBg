@@ -1,0 +1,326 @@
+/* Options panel */
+
+.wrapperOptions
+{
+  display: grid;
+  grid-template-columns: 50% 30% 20%;
+  align-items: center;
+  height:100px;
+}
+
+#categoryName
+{
+  font-family: ArialRounded;
+  font-weight: bold;
+  font-size: 23px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+/* Sort panel */
+.sort.panel
+{
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 150px;
+}
+
+.panel>.sort.button
+{
+  font-family: ArialRounded;
+  display: flex;
+  background-color: white;
+  padding: 5px 0px 5px 10px;
+  width:100%;
+  font-size: 12px;
+  cursor:pointer;
+  outline: none;
+}
+
+.panel>.button>.category.sort
+{
+  font-weight: bold;
+  font-size: 9pt;
+}
+
+
+.panel>.dropdown-content
+{
+  flex-direction: column;
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  z-index: -1;
+  overflow: auto;
+  max-height: 200px;
+  box-shadow: 0px 8px 7px 2px rgba(0,0,0,0.2);
+  padding-left: 5px;
+  padding-right: 5px;
+  opacity: 0;
+  transition: visibility 0.2s,opacity 0.3s linear;
+}
+
+.lg_button_option>a
+{
+  margin:0 auto;
+}
+
+.sort.arrow
+{
+  height: 6px;
+  align-self: center;
+  margin-left: auto;
+  margin-right: 10%;
+  transition-duration: 0.8s;
+}
+
+/* Category panel */
+.category.panel
+{
+  display: none;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 150px;
+}
+
+.panel>.category.button
+{
+  font-family: ArialRounded;
+  display: flex;
+  background-color: white;
+  padding: 5px 0px 5px 10px;
+  width: 100%;
+  font-size: 12px;
+  cursor:pointer;
+  outline: none;
+
+}
+
+/* Grid panel */
+
+.grid.panel
+{
+  display: flex;
+  justify-content: center;
+
+}
+.grid.panel img
+{
+  height: 22px;
+  margin: 4px;
+  cursor: pointer;
+}
+
+
+/* Main body with content */
+.main.content
+{
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+
+.left.side
+{
+  justify-self:center;
+}
+
+.scrollmenu
+{
+  overflow: scroll;
+  white-space: nowrap;
+  width: 140px;
+  overflow-x:hidden;
+  margin-bottom:40px;
+  /* For firefox */
+  scrollbar-color: #A52422 #BCBCBC;
+  scrollbar-width:thin;
+}
+.category.menu .scrollmenu
+{
+  height: 400px;
+}
+
+.scrollmenu a
+{
+  display:inline-block;
+  color: #0D1F2D;
+  text-decoration: none;
+  margin-top: 5px;
+  font-size: 18px;
+}
+a>span
+{
+  position: relative;
+  color:#A52422;
+  font-size: 11px;
+  font-weight: bold;
+  bottom: 8px;
+  left:2px;
+  z-index: 1;
+}
+
+/* Scrollbar stile */
+.scrollmenu::-webkit-scrollbar {
+  width: 9px;
+}
+
+/* Track */
+.scrollmenu::-webkit-scrollbar-track {
+  background: #BCBCBC;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Handle */
+.scrollmenu::-webkit-scrollbar-thumb {
+  background: #A52422;
+  border-radius: 10px;
+
+}
+
+/* Handle on hover */
+.scrollmenu::-webkit-scrollbar-thumb:active {
+  background: #0D1F2D;
+}
+
+/* Scrollbar stile */
+.scrollmenu::-webkit-scrollbar {
+  width: 9px;
+}
+
+
+
+/* Navigation button up */
+.upbutton
+{
+  display: block;
+  width: 55px;
+  margin:auto;
+}
+.upbutton>img
+{
+   position:fixed;
+   visibility:hidden;
+   bottom:60px;
+   height: 55px;
+}
+
+.upbutton:hover
+{
+  display: block;
+  width: 60px;
+  margin:auto;
+}
+.upbutton>img:hover
+{
+   cursor: pointer;
+   height: 60px;
+}
+
+
+/* Wallpaper images grid */
+
+.wallpaper.grid
+{
+  margin: 0;
+  display: grid;
+  width: 95%;
+  grid-gap: 7px;
+  grid-template-columns: calc(100% / 3) calc(100% / 3) calc(100% / 3);
+}
+
+.wallpaper
+{
+  position: relative;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  overflow: hidden;
+}
+.wallpaper.grid img
+{
+  width: 100%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transition: width 0.45s;
+}
+
+.wallpaper.grid img:hover
+{
+  width: 115%;
+  height: auto;
+}
+
+/* Pagination */
+
+.pagination
+{
+  width: 90%;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  margin:0 auto;
+
+}
+
+.pagin-wrapper
+{
+  display: flex;
+  align-items: center;
+}
+
+.pagin-main-panel
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pagin-main-panel a:first-child
+{
+  margin-left: 10px;
+}
+.pagin-link
+{
+  display:block;
+  line-height:40px;
+  width:40px;
+  border: 1px solid #0D1F2D;
+  border-radius: 5px;
+  text-align: center;
+
+  color: #0D1F2D;
+  text-decoration: none;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.pagin-link:hover
+{
+  background-color: #0D1F2D;
+  color:white;
+}
+
+.pagin-link.active
+{
+  background-color: #0D1F2D;
+  color:white;
+}
+
+.pagin-wrapper.forward
+{
+  display: flex;
+  justify-content: flex-end;
+}
+.pagin-link.forward
+{
+  margin: 0px;
+}
+.pagin-link.backward
+{
+  margin: 0px;
+}
