@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', function () {
 
     $tags = DB::table('tags')->get();
-    return view('home',['tags'=>$tags]);
+    $images = DB::table('images')->get();
+    return view('home',['tags'=>$tags,'images'=>$images]);
 });
 
 Route::get('/page', function () {
