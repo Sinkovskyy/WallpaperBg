@@ -123,7 +123,7 @@
               <a href="">Nature<span>8</span></a>
               <br>
               <a href="">Nature<span>9</span></a>
-              <br>
+              <br>           
               <a href="">Nature<span>10</span></a>
               <br>
               <a href="">Nature<span>11</span></a>
@@ -146,52 +146,6 @@
               <br>
               <a href="">Nature<span>20</span></a>
               <br>
-            </div>
-            <div class="resolution menu">
-              <div class="resolution scrollmenu">
-                <a href="">All</a>
-                <br>
-                <a href="">1499x0001</a>
-                <br>
-                <a href="">1499x0002</a>
-                <br>
-                <a href="">1499x0003</a>
-                <br>
-                <a href="">1499x0004</a>
-                <br>
-                <a href="">1499x0005</a>
-                <br>
-                <a href="">1499x0006</a>
-                <br>
-                <a href="">1499x0007</a>
-                <br>
-                <a href="">1499x0008</a>
-                <br>
-                <a href="">1499x0009</a>
-                <br>
-                <a href="">1499x0010</a>
-                <br>
-                <a href="">1499x0011</a>
-                <br>
-                <a href="">1499x0012</a>
-                <br>
-                <a href="">1499x0013</a>
-                <br>
-                <a href="">1499x0014</a>
-                <br>
-                <a href="">1499x0015</a>
-                <br>
-                <a href="">1499x0016</a>
-                <br>
-                <a href="">1499x0017</a>
-                <br>
-                <a href="">1499x0018</a>
-                <br>
-                <a href="">1499x0019</a>
-                <br>
-                <a href="">1499x0020</a>
-                <br>
-              </div>
             </div>
           </div>
 
