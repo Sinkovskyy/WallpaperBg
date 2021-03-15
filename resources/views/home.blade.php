@@ -106,46 +106,10 @@
             <div class="themes scrollmenu">
               <a href="">All<span>30</span></a>
               <br>
-              <a href="">Nature<span>10786</span></a>
-              <br>
-              <a href="">Nature<span>2</span></a>
-              <br>
-              <a href="">Nature<span>3234234</span></a>
-              <br>
-              <a href="">Nature<span>4123</span></a>
-              <br>
-              <a href="">Nature<span>5</span></a>
-              <br>
-              <a href="">Nature<span>6</span></a>
-              <br>
-              <a href="">Nature<span>7</span></a>
-              <br>
-              <a href="">Nature<span>8</span></a>
-              <br>
-              <a href="">Nature<span>9</span></a>
-              <br>           
-              <a href="">Nature<span>10</span></a>
-              <br>
-              <a href="">Nature<span>11</span></a>
-              <br>
-              <a href="">Nature<span>12</span></a>
-              <br>
-              <a href="">Nature<span>13</span></a>
-              <br>
-              <a href="">Nature<span>14</span></a>
-              <br>
-              <a href="">Nature<span>15</span></a>
-              <br>
-              <a href="">Nature<span>16</span></a>
-              <br>
-              <a href="">Nature<span>17</span></a>
-              <br>
-              <a href="">Nature<span>18</span></a>
-              <br>
-              <a href="">Nature<span>19</span></a>
-              <br>
-              <a href="">Nature<span>20</span></a>
-              <br>
+              @foreach($tags as $key => $data)
+              <a href="">{{$data->TagName}}<span>10786</span></a>
+                <br>
+              @endforeach
             </div>
           </div>
 
