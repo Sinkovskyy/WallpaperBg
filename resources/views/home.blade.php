@@ -71,25 +71,9 @@
             <button type="button" class="category button">Category :&nbsp;<span class="category sort">All</span> <img class="sort arrow" src="assets\blue_arrow.png" alt=""></button>
             <div class="dropdown-content sort scrollmenu" id="e">
               <div class="lg_button_option"><a href="">All</a></div>
-              <div class="lg_button_option"><a href="">Nature</a></div>
-              <div class="lg_button_option"><a href="">All</a></div>
-              <div class="lg_button_option"><a href="">Nature</a></div>
-              <div class="lg_button_option"><a href="">All</a></div>
-              <div class="lg_button_option"><a href="">Nature</a></div>
-              <div class="lg_button_option"><a href="">All</a></div>
-              <div class="lg_button_option"><a href="">Nature</a></div>
-              <div class="lg_button_option"><a href="">All</a></div>
-              <div class="lg_button_option"><a href="">Nature</a></div>
-              <div class="lg_button_option"><a href="">All</a></div>
-              <div class="lg_button_option"><a href="">Nature</a></div>
-              <div class="lg_button_option"><a href="">All</a></div>
-              <div class="lg_button_option"><a href="">Nature</a></div>
-              <div class="lg_button_option"><a href="">All</a></div>
-              <div class="lg_button_option"><a href="">Nature</a></div>
-              <div class="lg_button_option"><a href="">All</a></div>
-              <div class="lg_button_option"><a href="">Nature</a></div>
-              <div class="lg_button_option"><a href="">All</a></div>
-              <div class="lg_button_option"><a href="">Nature</a></div>
+              @foreach($tags as $key => $data)
+                <div class="lg_button_option"><a href="">{{$data->TagName}}</a></div>
+              @endforeach
             </div>
           </div>
           <div class="grid panel">
@@ -119,11 +103,10 @@
         <div class="right side">
 
           <div class="wallpaper grid">
+
             @foreach($images as $key => $data)
             <div class="wallpaper"> <a href="/page"><img src="data:image/jpeg;base64,{{base64_encode($data->Image)}}" alt=""></a></div>
             @endforeach
-
-
 
           </div>
 

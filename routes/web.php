@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\TagsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,6 @@ Route::get('/', function () {
 Route::get('/page', function () {
     return view('page');
 });
+
+
+// Route::get('/users', [TagsController::class, 'getData']);
