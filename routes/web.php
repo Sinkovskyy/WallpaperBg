@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TagsController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -15,16 +15,10 @@ use App\Http\Controllers\TagsController;
 |
 */
 
-Route::get('/', function () {
-
-    $tags = DB::table('tags')->get();
-    $images = DB::table('images')->get();
-    return view('home',['tags'=>$tags,'images'=>$images]);
-});
+Route::get('/', [HomeController::class, 'load']);
 
 Route::get('/page', function () {
     return view('page');
 });
 
 
-// Route::get('/users', [TagsController::class, 'getData']);
