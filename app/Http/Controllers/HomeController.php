@@ -9,8 +9,9 @@ class HomeController extends Controller
 {
     public function load()
     {
-        $tags = Tag::all();
         $images = Image::all();
+        $tags = Tag::getTags();
         return view('home',['tags'=>$tags,'images'=>$images]);
     }
+
 }
