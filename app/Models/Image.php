@@ -15,6 +15,6 @@ class Image extends Model
     public static function getImageById($id)
     {
         $image = self::where('Id',$id)->get();
-        return $image;
+        return $image[0];
     }
 }

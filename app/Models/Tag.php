@@ -17,8 +17,8 @@ class Tag extends Model
         $amount = Image::where('Tags','regexp',$tag)->count();
         return $amount;
     }
-    
-    // Create array of amount of images for tags 
+
+    // Create array of amount of images for tags
     private static function getTagsImagesAmount()
     {
         $tags = self::all();
