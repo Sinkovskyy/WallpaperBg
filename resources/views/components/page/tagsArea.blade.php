@@ -1,7 +1,8 @@
 <div class="tags-area">
-    <button class="tag">Nature</button>
-    <button class="tag">Nature</button>
-    <button class="tag">Nature</button>
-    <button class="tag">Nature</button>
-    <button class="tag">Nature</button>
+
+
+    @foreach (explode(" ",$image->Tags) as $tag)
+    <button class="tag">{{$tag}}</button>
+    @endforeach
+
 </div>

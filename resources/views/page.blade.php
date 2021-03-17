@@ -1,4 +1,4 @@
-@include('components/header')
+@include('components.page.header')
 
     <div class="main_content">
       <div class="top side">

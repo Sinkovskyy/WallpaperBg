@@ -1,10 +1,10 @@
-@include('components.header')
+@include('components.home.header')
 
 
     <div class="options panel">
 
-          @include('components.optionPanel')
-          @include('components.categoryPanelMobile')
+          @include('components.home.optionPanel')
+          @include('components.home.categoryPanelMobile')
 
           <div class="grid panel">
             <img id="two" src="assets\blue_two_grid.png" alt="">
@@ -17,11 +17,11 @@
 
     <div class="main content">
 
-        @include('components.categoryPanel')
+        @include('components.home.categoryPanel')
 
         <div class="right side">
 
-          @include('components.wallpaperGrid')
+          @include('components.home.wallpaperGrid')
 
         </div>
 
