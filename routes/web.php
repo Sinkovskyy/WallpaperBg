@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 
 
 
@@ -10,8 +11,6 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'load']);
 
-Route::get('/page', function () {
-    return view('page');
-});
+Route::get('/page/{id}',[PageController::class, 'load']);
 
 
