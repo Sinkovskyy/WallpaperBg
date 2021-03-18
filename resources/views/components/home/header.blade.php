@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <link rel="stylesheet" href="{{asset('css/header.css')}}">
     <link rel="stylesheet" href="{{asset('css/body.css')}}">
@@ -12,11 +13,13 @@
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('css/adaptive.css')}}">
     <link rel="stylesheet" href="{{asset('css/page-adaptive.css')}}">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{asset('js/searchbar.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/grid.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/scroll.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/panel.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/loadImages.js')}}"></script>
 
   </head>
   <body>

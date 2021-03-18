@@ -19,11 +19,22 @@ class Image extends Model
     }
 
     // Get images by tags
-    public static function getImagesByTags($tags = [], $limit = 6, $excId = '')
+    public static function getImagesByTags($tags = [], $limit = 6, $excId = '',$offset = 0)
     {
         $images = self::where('Tags','regexp',implode('|',$tags))
         ->where('Id','!=',$excId)
+        ->offset($offset)
         ->limit($limit)->get();
         return $images;
+    }
+
+    public static function test()
+    {
+
+    }
+
+    public static function work()
+    {
+        return "work";
     }
 }

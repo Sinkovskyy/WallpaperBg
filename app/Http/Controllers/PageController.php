@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -13,4 +14,6 @@ class PageController extends Controller
         $rec = Image::getImagesByTags(explode(' ',$image->Tags),excId:$id);
         return view('page',['image' => $image,'rec' => $rec]);
     }
+
+
 }
