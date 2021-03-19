@@ -28,13 +28,15 @@ class Image extends Model
         return $images;
     }
 
-    public static function test()
+    public static function toCustomJson($images)
     {
-
-    }
-
-    public static function work()
-    {
-        return "work";
+        $result = [[]];
+        for($i = 0; $i < count($images);$i++)
+        {
+            $result[$i]["id"] = $images[$i]->Id;
+            $result[$i]["image"] = $images[$i]->Image;
+            $result[$i]["id"] = $images[$i]->Id;
+            $reslut[$i] = json_encode($result[$i]);
+        }
     }
 }
