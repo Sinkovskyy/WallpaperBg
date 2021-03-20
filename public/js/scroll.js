@@ -6,14 +6,27 @@ $.ajaxSetup({
 });
 
 
+function fillGridByImages(images)
+{
+    var img;
+    images.forEach(image => {
+        img = "<div class='wallpaper'><a href='/page/"+ image['id'] +"'><img src='data:image/jpeg;base64,"
+        + image['image'] + "' alt=''></a></div>";
+        $(".wallpaper.grid").append(img);
+    });
+    update_grid();
+}
+
+
+
 function ifScrolledInTheEnd(offset,page,tag)
 {
+
     // When user scroll to the end of the document
     if( $(document).innerHeight() -  $(window).innerHeight() <= $(document).scrollTop() + offset)
     {
         // Disable scroll listener
         $(document).off("scroll");
-        page++;
         // Send post request for receiving images
         $.ajax({
             type: "POST",
@@ -27,6 +40,8 @@ function ifScrolledInTheEnd(offset,page,tag)
             success: function (response)
             {
                 console.log(response);
+                fillGridByImages(response["images"]);
+                page++;
             }
         });
     }
@@ -59,7 +74,7 @@ function upButtonListener()
 $(document).ready(function(){
 
     var offset = 10,
-    page = 1,// Current page
+    page = 0,// Current page
     tag = window.location.pathname;// Get current tag for images
 
     ifScrolledInTheEnd(offset,page,tag);
