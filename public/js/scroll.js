@@ -19,14 +19,13 @@ function fillGridByImages(images)
 
 
 
-function ifScrolledInTheEnd(offset,page,tag)
+function ifScrolledInTheEnd(offset,page)
 {
 
     // When user scroll to the end of the document
     if( $(document).innerHeight() -  $(window).innerHeight() <= $(document).scrollTop() + offset)
     {
-        // Disable scroll listener
-        $(document).off("scroll");
+        tag = window.location.pathname;// Get current tag for images
         // Send post request for receiving images
         $.ajax({
             type: "POST",
@@ -39,12 +38,12 @@ function ifScrolledInTheEnd(offset,page,tag)
             dataType: "json",
             success: function (response)
             {
-                console.log(response);
                 fillGridByImages(response["images"]);
-                page++;
             }
         });
+        return (page + 1);
     }
+    return page;
 }
 
 
@@ -74,10 +73,8 @@ function upButtonListener()
 $(document).ready(function(){
 
     var offset = 10,
-    page = 0,// Current page
-    tag = window.location.pathname;// Get current tag for images
-
-    ifScrolledInTheEnd(offset,page,tag);
+    page = 0;// Current page
+    page = ifScrolledInTheEnd(offset,page);
 
     // Scroll listener
     $(document).scroll(function(event){
@@ -87,7 +84,7 @@ $(document).ready(function(){
         upButtonListener();
 
         // Document extreme edge
-        ifScrolledInTheEnd(offset,page,tag);
+        page = ifScrolledInTheEnd(offset,page);
     });
 
 
