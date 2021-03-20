@@ -9,9 +9,7 @@ class HomeController extends Controller
 {
     public function load()
     {
-        $images = Image::getImagesByTags([""]);
-        $tags = Tag::getTags();
-        return view('home',['tags'=>$tags,'images'=>$images]);
+        return redirect('/all');
     }
 
 

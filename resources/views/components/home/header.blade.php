@@ -19,7 +19,6 @@
     <script type="text/javascript" src="{{asset('js/grid.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/scroll.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/panel.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/loadImages.js')}}"></script>
 
   </head>
   <body>
