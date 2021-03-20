@@ -2,7 +2,7 @@
 
 
     @foreach (explode(" ",$image->tags) as $tag)
-        <button class="tag">{{ucfirst($tag)}}</button>
+        <button onclick="window.location.href='/{{$tag}}'" class="tag">{{ucfirst($tag)}}</button>
     @endforeach
 
 </div>

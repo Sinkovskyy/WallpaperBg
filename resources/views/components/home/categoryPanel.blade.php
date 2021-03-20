@@ -9,10 +9,10 @@
                 $all += $data->amount;
             }
         ?>
-        <a href="">All<span>{{$all}}</span></a>
+        <a href="/all">All<span>{{$all}}</span></a>
         <br>
         @foreach($tags as $key => $data)
-        <a href="">{{$data->tag}}<span>{{$data->amount}}</span></a>
+        <a href="/{{lcfirst($data->tag)}}">{{$data->tag}}<span>{{$data->amount}}</span></a>
           <br>
         @endforeach
 

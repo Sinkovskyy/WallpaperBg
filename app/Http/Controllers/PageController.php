@@ -10,8 +10,9 @@ class PageController extends Controller
 {
     public function load($id)
     {
+        $limit = 6;
         $image = Image::getImageById($id);
-        $rec = Image::getImagesByTags(explode(' ',$image->tags),excId:$id);
+        $rec = Image::getImagesByTags(explode(' ',$image->tags),limit:$limit,excId:$id);
         return view('page',['image' => $image,'rec' => $rec]);
     }
 

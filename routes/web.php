@@ -10,6 +10,7 @@ use App\Http\Controllers\ImagesSenderController;
 
 Route::get('/', [HomeController::class, 'load']);
 Route::get('/page/{id}',[PageController::class, 'load']);
+Route::get('/{tag}',[HomeController::class, 'loadByTag']);
 
 Route::post('/getImages',[ImagesSenderController::class,'getImages']);
 
