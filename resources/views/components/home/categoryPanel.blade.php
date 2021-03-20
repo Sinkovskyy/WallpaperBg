@@ -2,9 +2,17 @@
 
     <div class="category menu">
       <div class="themes scrollmenu">
-
+        <?php
+            $all = 0;
+            foreach($tags as $key => $data)
+            {
+                $all += $data->amount;
+            }
+        ?>
+        <a href="">All<span>{{$all}}</span></a>
+        <br>
         @foreach($tags as $key => $data)
-        <a href="">{{$data->TagName}}<span>{{$data->amount}}</span></a>
+        <a href="">{{$data->tag}}<span>{{$data->amount}}</span></a>
           <br>
         @endforeach
 

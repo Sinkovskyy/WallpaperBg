@@ -9,7 +9,7 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $table = "images";
+    protected $table = "images_db";
 
     // Get image by id from db
     public static function getImageById($id)
@@ -33,9 +33,9 @@ class Image extends Model
         $result = [[]];
         for($i = 0; $i < count($images);$i++)
         {
-            $result[$i]["id"] = $images[$i]->Id;
-            $result[$i]["image"] = $images[$i]->Image;
-            $result[$i]["id"] = $images[$i]->Id;
+            $result[$i]["id"] = $images[$i]->id;
+            $result[$i]["image"] = $images[$i]->image;
+            $result[$i]["id"] = $images[$i]->id;
             $reslut[$i] = json_encode($result[$i]);
         }
     }

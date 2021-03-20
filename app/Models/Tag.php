@@ -9,7 +9,7 @@ use App\Models\Image;
 class Tag extends Model
 {
     use HasFactory;
-    protected $table = 'tags';
+    protected $table = 'tags_db';
 
     // Count images by tag
     private static function imagesAmount($tag)
@@ -21,19 +21,19 @@ class Tag extends Model
     // Create array of amount of images for tags
     private static function getTagsImagesAmount()
     {
-        $tags = self::all();
-        // Create for first tag 'All'
-        $amounts = [self::imagesAmount('')];
-        for($i = 1; $i < $tags->count();$i++)
+        $tags = self::orderBy('tag','asc')->get();
+        $amounts = [];
+        for($i = 0; $i < $tags->count();$i++)
         {
-            $amounts[$i] = self::imagesAmount($tags[$i]->TagName);
+            $amounts[$i] = self::imagesAmount($tags[$i]->tag);
         }
         return $amounts;
     }
 
+    // Get tags and amount for them
     public static function getTags()
     {
-        $tags = self::all();
+        $tags = self::orderBy('tag','asc')->get();
         $amounts = self::getTagsImagesAmount();
         for($i = 0; $i < count($tags); $i++)
         {

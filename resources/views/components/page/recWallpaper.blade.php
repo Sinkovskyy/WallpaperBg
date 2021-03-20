@@ -3,8 +3,8 @@
     <div class="recommended images container wallpaper grid">
 
         @foreach ($rec as $img)
-        <div class="wallpaper"><a href="/page/{{$img->Id}}">
-            <img src="data:image/jpeg;base64,{{base64_encode($img->Image)}}" alt="">
+        <div class="wallpaper"><a href="/page/{{$img->id}}">
+            <img src="data:image/jpeg;base64,{{base64_encode($img->image)}}" alt="">
         </a></div>
         @endforeach
 
