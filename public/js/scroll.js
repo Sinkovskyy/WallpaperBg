@@ -19,7 +19,7 @@ function fillGridByImages(images)
     var img;
     images.forEach(image => {
         img = "<div class='wallpaper'><a href='/page/"+ image['id'] +"'><img src='data:image/jpeg;base64,"
-        + image['image'] + "' alt=''></a></div>";
+        + image['compressed_image'] + "' alt=''></a></div>";
         $(".wallpaper.grid").append(img);
     });
     update_grid();
@@ -85,9 +85,9 @@ function upButtonListener()
 
 $(document).ready(function(){
 
-    var offset = 500,
+    var offset = 4000, // pixels remained for end of the document when ajax request must trigger
     page = 0;// Current page
-    page = ifScrolledInTheEnd(offset,page);
+    ifScrolledInTheEnd(offset);
 
     // Scroll listener
     $(document).scroll(function(event){
@@ -96,7 +96,7 @@ $(document).ready(function(){
         upButtonListener();
 
         // Document extreme edge
-        ifScrolledInTheEnd(offset,page);
+        ifScrolledInTheEnd(offset);
     });
 
 

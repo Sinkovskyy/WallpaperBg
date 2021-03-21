@@ -19,6 +19,7 @@ class CreateImagesDb extends Migration
             $table->string("tags");
         });
         DB::statement("ALTER TABLE images_db ADD image LONGBLOB");
+        DB::statement("ALTER TABLE images_db ADD compressed_image LONGBLOB");
     }
 
     /**

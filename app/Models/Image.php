@@ -22,21 +22,21 @@ class Image extends Model
     public static function getImagesByTags($tags = [], $limit = 42, $excId = '',$offset = 0)
     {
         $images = self::where('Tags','regexp',implode('|',$tags))
-        ->where('Id','!=',$excId)
+        ->where('id','!=',$excId)
         ->offset($offset)
         ->limit($limit)->get();
         return $images;
     }
 
-    public static function toCustomJson($images)
+
+    // Get just compressed imagess by tags
+    public static function getCompressedImagesByTags($tags = [], $limit = 42, $excId = '',$offset = 0)
     {
-        $result = [[]];
-        for($i = 0; $i < count($images);$i++)
-        {
-            $result[$i]["id"] = $images[$i]->id;
-            $result[$i]["image"] = $images[$i]->image;
-            $result[$i]["id"] = $images[$i]->id;
-            $reslut[$i] = json_encode($result[$i]);
-        }
+        $images = self::select('id','tags','compressed_image')->where('tags','regexp',implode('|',$tags))
+        ->where('id','!=',$excId)
+        ->offset($offset)
+        ->limit($limit)->get();
+        return $images;
     }
+
 }

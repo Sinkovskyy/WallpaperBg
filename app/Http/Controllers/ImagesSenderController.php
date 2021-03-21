@@ -15,7 +15,7 @@ class ImagesSenderController extends Controller
         {
             $json[$i]['id'] = $images[$i]['id'];
             $json[$i]['tags'] = $images[$i]['tags'];
-            $json[$i]['image'] = base64_encode($images[$i]['image']);
+            $json[$i]['compressed_image'] = base64_encode($images[$i]['compressed_image']);
         }
         return $json;
     }
