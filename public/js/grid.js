@@ -257,16 +257,27 @@ function update_grid()
 $(document).ready(function(){
 
 
-  var tpgrid, grid, container, width, height;
+  var grid, tpgrid;
+
 
   grid = $(".wallpaper.grid");
   container = grid.children();
   width = $(window).width();
   height = $(window).height();
 
+  if(localStorage.getItem("tpgrid") === null)
+  {
+    tpgrid = "nine";
+  }
+  else
+  {
+    tpgrid = localStorage.tpgrid;
+  }
+
+
   // Auto-set red icon for last grid icon
-  $(".grid.panel").children().last()
-  .attr("src","assets/red_" + $(".grid.panel").children().last().attr("id") + "_grid.png");
+  $("#" + tpgrid)
+  .attr("src","assets/red_" + tpgrid + "_grid.png");
 
   update_grid();
 
@@ -291,6 +302,7 @@ $(document).ready(function(){
       width = $(window).width();
       height = $(window).height();
       tpgrid = $(this).attr("id");
+      localStorage.setItem("tpgrid",tpgrid);
 
       // Change button to active form
       $(this).attr("src","assets/red_" + tpgrid + "_grid.png");

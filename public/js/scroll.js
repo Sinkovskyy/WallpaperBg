@@ -9,10 +9,26 @@ page = 0;
 // Set headers
 $.ajaxSetup({
     headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
     }
 });
 
+
+function changeCategoryName()
+{
+    var tag = window.location.pathname.substr(1),
+        categoryName = $("#categoryName");
+
+    if (tag == "all" || tag == "")
+    {
+        categoryName.text("Wallpaper HD");
+    }
+    else
+    {
+        categoryName.text(tag.charAt(0).toUpperCase() + tag.substr(1) + " wallpaper HD");
+    }
+
+}
 
 function fillGridByImages(images)
 {
@@ -39,6 +55,7 @@ function imageRequest()
         success: function (response)
         {
             fillGridByImages(response["images"]);
+            changeCategoryName();
             page++;
             access = true;
         }
@@ -88,7 +105,6 @@ $(document).ready(function(){
     var offset = 4000, // pixels remained for end of the document when ajax request must trigger
     page = 0;// Current page
     ifScrolledInTheEnd(offset);
-
     // Scroll listener
     $(document).scroll(function(event){
         // UpButton listeners

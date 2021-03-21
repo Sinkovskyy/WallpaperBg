@@ -10,7 +10,7 @@
         ?>
         <div class="lg_button_option"><a href="/all">All</a></div>
         @foreach($tags as $key => $data)
-          <div class="lg_button_option"><a href="/{{lcfirst($data->tag)}}">{{$data->tag}}</a></div>
+          <div class="lg_button_option"><a href="/{{$data->tag}}">{{ucfirst($data->tag)}}</a></div>
         @endforeach
 
     </div>
