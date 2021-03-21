@@ -1,3 +1,11 @@
+
+// global variables
+var access = true,
+page = 0;
+
+
+
+
 // Set headers
 $.ajaxSetup({
     headers: {
@@ -16,34 +24,39 @@ function fillGridByImages(images)
     });
     update_grid();
 }
-
-
-
-function ifScrolledInTheEnd(offset,page)
+// Send post request for receiving images
+function imageRequest()
 {
+    $.ajax({
+        type: "POST",
+        url: "/getImages",
+        data:
+        {
+            "page":page,
+            "tag":window.location.pathname,
+        },
+        dataType: "json",
+        success: function (response)
+        {
+            fillGridByImages(response["images"]);
+            page++;
+            access = true;
+        }
+    });
+    return
+}
 
+function ifScrolledInTheEnd(offset)
+{
     // When user scroll to the end of the document
     if( $(document).innerHeight() -  $(window).innerHeight() <= $(document).scrollTop() + offset)
     {
-        tag = window.location.pathname;// Get current tag for images
-        // Send post request for receiving images
-        $.ajax({
-            type: "POST",
-            url: "/getImages",
-            data:
-            {
-                "page":page,
-                "tag":tag,
-            },
-            dataType: "json",
-            success: function (response)
-            {
-                fillGridByImages(response["images"]);
-            }
-        });
-        return (page + 1);
+        if (access)
+        {
+            access = false;
+            imageRequest();
+        }
     }
-    return page;
 }
 
 
@@ -72,19 +85,18 @@ function upButtonListener()
 
 $(document).ready(function(){
 
-    var offset = 10,
+    var offset = 500,
     page = 0;// Current page
     page = ifScrolledInTheEnd(offset,page);
 
     // Scroll listener
     $(document).scroll(function(event){
-
         // UpButton listeners
         ifScrolledInUpButtonExtremeEdge();
         upButtonListener();
 
         // Document extreme edge
-        page = ifScrolledInTheEnd(offset,page);
+        ifScrolledInTheEnd(offset,page);
     });
 
 

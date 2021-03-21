@@ -22,7 +22,7 @@ class ImagesSenderController extends Controller
 
     public function getImages(Request $request)
     {
-        $limit = 42;
+        $limit = 21;
         $tag = substr(request()->input('tag'),1);
         $page = intval(request()->input('page'));
         if($tag == "all") $tag = "";

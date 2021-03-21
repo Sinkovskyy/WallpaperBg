@@ -49,6 +49,11 @@ function img_mobile_scale_hover($img,hover,unhover = "101%")
 function changeContainerSizeByImage($container)
 {
   var size = $container.children().children().css("height");
+  if(size == "0px")
+  {
+    setTimeout(update_grid,10);
+    return
+  }
   $container.each(function(){
     $(this).css({"height": size});
   });
