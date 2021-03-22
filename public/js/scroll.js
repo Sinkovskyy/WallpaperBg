@@ -99,6 +99,7 @@ function upButtonListener()
     });
 }
 
+// Tag
 function linkChanged(tag)
 {
     window.history.pushState({page: "another"}, "another page", tag);
@@ -106,12 +107,13 @@ function linkChanged(tag)
     page = 0;
     access = true;
     imageRequest();
+    $("#categoryMobilePanel").text(tag.charAt(0).toUpperCase() + tag.substr(1));
 }
 
 
 $(document).ready(function(){
 
-    var offset = 4000, // pixels remained for end of the document when ajax request must trigger
+    var offset = 1200, // pixels remained for end of the document when ajax request must trigger
     page = 0;// Current page
     ifScrolledInTheEnd(offset);
     // Scroll listener
