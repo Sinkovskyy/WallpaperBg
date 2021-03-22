@@ -16,5 +16,15 @@ class PageController extends Controller
         return view('page',['image' => $image,'rec' => $rec]);
     }
 
+    public function updateDownloadedTimes(Request $request)
+    {
+        $id = request()->input('id');
+        $times = Image::getImageDownloadedTimes($id);
+        $times++;
+        Image::updateImageDownloadedTimes($id,$times);
+        return response()->json([
+            'res' => $times,
+        ]);
+    }
 
 }

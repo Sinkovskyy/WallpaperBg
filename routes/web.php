@@ -12,6 +12,9 @@ Route::get('/', [HomeController::class, 'load']);
 Route::get('/{tag}',[HomeController::class, 'loadByTag']);
 Route::get('/page/{id}',[PageController::class, 'load']);
 
+
+
+Route::post('/userDownloadedImage', [PageController::class,'updateDownloadedTimes']);
 Route::post('/getImages',[ImagesSenderController::class,'getImages']);
 
 

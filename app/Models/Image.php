@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Image extends Model
 {
@@ -37,6 +38,20 @@ class Image extends Model
         ->offset($offset)
         ->limit($limit)->get();
         return $images;
+    }
+
+
+    //Get image downloaded time
+    public static function getImageDownloadedTimes($id)
+    {
+        $times = self::select('downloaded_times')->where('id',$id)->get();
+        return $times[0]['downloaded_times'];
+    }
+
+
+    public static function updateImageDownloadedTimes($id,$times)
+    {
+        DB::table('images_db')->where('id',$id)->update(['downloaded_times'=>$times]);
     }
 
 }
