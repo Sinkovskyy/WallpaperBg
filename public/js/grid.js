@@ -1,7 +1,9 @@
+
+
 function img_scale_hover($img,hover,unhover = "100%")
 {
 
-  // Change image size when window change size
+  // Change image size when window's size changed
   $img.css({
     "height":"auto",
     "width":unhover
@@ -42,175 +44,188 @@ function img_mobile_scale_hover($img,hover,unhover = "101%")
       "width":"auto"
     });
   });
-
 }
 
-// Change container size relatively on img. Bad practive
-function changeContainerSizeByImage($container)
+// Change containers size relatively on img. Bad practive
+function changecontainersSizeByImage($containers,$img)
 {
-  var size = $container.children().children().css("height");
+  var size = $containers.children().children().css("height");
   if(size == "0px")
   {
     setTimeout(update_grid,10);
     return
   }
-  $container.each(function(){
+    // Animation off
+  $img.css({"transition":"width 0s"});
+    // Disable hover on image
+  $img.off("mouseover");
+    // Make images normal again
+  $img.css({"width":"100%"});
+
+  size = $containers.children().children().css("height");
+  $containers.each(function(){
     $(this).css({"height": size});
   });
+    // Animation on
+  $img.css({"transition":"width 0.45s"});
 }
 
 //For pc version
-function change_to_nine_grid($grid,$container)
+function change_to_nine_grid($grid,$containers)
 {
   // Declare image variable
-  var $img = $container.children().children();
+  var $img = $containers.children().children();
 
   // Change grid template
   $grid.css({"grid-template-columns":"" + "1fr" + " 1fr" + " 1fr"});
 
-
     //Scale image size when hover on them//Scale image size when hover on them
+
+  changecontainersSizeByImage($containers,$img);
   img_scale_hover($img,"115%");
 
-  changeContainerSizeByImage($container);
-
-  // Change image to absolute after container get scalling relatively on img
+  // Change image to absolute after containers get scalling relatively on img
   $img.css({"transform":"translate(-50%,-50%)"});
   $img.css({"position":"absolute"});
 }
 
 
-function change_to_four_grid($grid,$container)
+function change_to_four_grid($grid,$containers)
 {
   // Declare image variable
-  var $img = $container.children().children();
+  var $img = $containers.children().children();
 
   // Change grid template
   $grid.css({"grid-template-columns":"50% 50%"});
 
+ //Scale image size when hover on them
+  changecontainersSizeByImage($containers,$img);
 
-  //Scale image size when hover on them
   img_scale_hover($img,"105%");
 
-  changeContainerSizeByImage($container);
-
-  // Change image to absolute after container get scalling relatively on img
-  $container.children().children().css({"transform":"translate(-50%,-50%)"});
-  $container.children().children().css({"position":"absolute"});
+  // Change image to absolute after containers get scalling relatively on img
+  $containers.children().children().css({"transform":"translate(-50%,-50%)"});
+  $containers.children().children().css({"position":"absolute"});
 
 }
 
 
 
 
-function change_to_two_grid($grid,$container)
+function change_to_two_grid($grid,$containers)
 {
   // Declare image variable
-  var $img = $container.children().children();
+  var $img = $containers.children().children();
 
   // Change grid template
   $grid.css({"grid-template-columns":"100%"});
 
+
+
   //Scale image size when hover on them
+  changecontainersSizeByImage($containers,$img);
+
   img_scale_hover($img,"100%");
 
-  changeContainerSizeByImage($container);
-  // Change image to absolute after container get scalling relatively on img
-  $container.children().children().css({"transform":"translate(-50%,-50%)"});
-  $container.children().children().css({"position":"absolute"});
+
+  // Change image to absolute after containers get scalling relatively on img
+  $containers.children().children().css({"transform":"translate(-50%,-50%)"});
+  $containers.children().children().css({"position":"absolute"});
 
 }
 
 
 //For mobile version
-function change_to_nine_grid_mobile($grid,$container,height)
+function change_to_nine_grid_mobile($grid,$containers,height)
 {
-  var $img = $container.children().children();
+    var $img = $containers.children().children();
 
-  $grid.css({"grid-template-columns":"" + 100/3 + "%" + 100/3 + "%" + 100/3 + "%"});
-  $container.css({"height":height/3+"px"})
+    $grid.css({"grid-template-columns":"" + 100/3 + "%" + 100/3 + "%" + 100/3 + "%"});
+    $containers.css({"height":height/3+"px"});
+    $img.css({"transition":"height 0.45s"});
 
-  // Change image to absolute after container get scalling relatively on img
-  $container.children().children().css({"transform":"translate(-50%,-50%)"});
-  $container.children().children().css({"position":"absolute"});
+    //Scale image size when hover on them
+    img_mobile_scale_hover($img,"115%");
 
-  //Scale image size when hover on them
-  img_mobile_scale_hover($img,"115%");
+    // Change image to absolute after containers get scalling relatively on img
+    $containers.children().children().css({"transform":"translate(-50%,-50%)"});
+    $containers.children().children().css({"position":"absolute"});
 
 }
 
 
-function change_to_four_grid_mobile($grid,$container,height)
+function change_to_four_grid_mobile($grid,$containers,height)
 {
-  var $img = $container.children().children();
+  var $img = $containers.children().children();
   $grid.css({"grid-template-columns":"50% 50%"});
-  $container.css({"height":height/2+"px"});
+  $containers.css({"height":height/2+"px"});
+  $img.css({"transition":"height 0.45s"});
 
-  // Change image to absolute after container get scalling relatively on img
-  $container.children().children().css({"transform":"translate(-50%,-50%)"});
-  $container.children().children().css({"position":"absolute"});
+  // Change image to absolute after containers get scalling relatively on img
+  $containers.children().children().css({"transform":"translate(-50%,-50%)"});
+  $containers.children().children().css({"position":"absolute"});
 
   //Scale image size when hover on them
   img_mobile_scale_hover($img,"105%");
 }
 
 
-function change_to_two_grid_mobile($grid,$container,height)
+function change_to_two_grid_mobile($grid,$containers,height)
 {
 
   var hheader = $(".header").css("height"),
-      $img = $container.children().children();
+      $img = $containers.children().children();
   hheader = parseInt(hheader, 10);
   $grid.css({"grid-template-columns":"100%"});
-  $container.css({"height":height - hheader+"px"});
+  $containers.css({"height":height - hheader+"px"});
 
-  // Change image to absolute after container get scalling relatively on img
-  $container.children().children().css({"transform":"translate(-50%,-50%)"});
-  $container.children().children().css({"position":"absolute"});
+  // Change image to absolute after containers get scalling relatively on img
+  $containers.children().children().css({"transform":"translate(-50%,-50%)"});
+  $containers.children().children().css({"position":"absolute"});
 
   //Scale image size when hover on them
   img_mobile_scale_hover($img,"101%");
 }
 
 //Chenge grid size
-function change_grid_state(tpgrid,grid,container)
+function change_grid_state(tpgrid,grid,containers)
 {
   if(tpgrid == "nine")
   {
-    change_to_nine_grid(grid,container);
+    change_to_nine_grid(grid,containers);
   }
   else if(tpgrid == "four")
   {
-    change_to_four_grid(grid,container);
+    change_to_four_grid(grid,containers);
   }
   else
   {
-    change_to_two_grid(grid,container);
+    change_to_two_grid(grid,containers);
   }
 }
 
 //Chenge grid size for mobile version
-function change_mobile_grid_state(tpgrid,grid,container,height)
+function change_mobile_grid_state(tpgrid,grid,containers,height)
 {
   // Change grid state
   if(tpgrid == "nine")
   {
-    change_to_nine_grid_mobile(grid,container,height);
+    change_to_nine_grid_mobile(grid,containers,height);
   }
   else if(tpgrid == "four")
   {
-    change_to_four_grid_mobile(grid,container,height);
+    change_to_four_grid_mobile(grid,containers,height);
   }
   else
   {
-    change_to_two_grid_mobile(grid,container,height);
+    change_to_two_grid_mobile(grid,containers,height);
   }
 }
 
 function update_grid()
 {
     grid = $(".wallpaper.grid");
-    container = grid.children();
+    containers = grid.children();
     width = $(window).width();
     height = $(window).height();
 
@@ -220,12 +235,12 @@ function update_grid()
       if(width <= 800)
       {
         tpgrid = "two";
-        change_mobile_grid_state(tpgrid,grid,container,height);
+        change_mobile_grid_state(tpgrid,grid,containers,height);
       }
       else
       {
         tpgrid = "nine"
-        change_grid_state(tpgrid,grid,container);
+        change_grid_state(tpgrid,grid,containers);
       }
 
     }
@@ -236,7 +251,7 @@ function update_grid()
           if($(this).attr("src").search("red") + 1)
           {
             tpgrid = $(this).attr("id");
-            change_grid_state(tpgrid,grid,container);
+            change_grid_state(tpgrid,grid,containers);
           }
       });
     }
@@ -245,7 +260,7 @@ function update_grid()
           if($(this).attr("src").search("red") + 1)
           {
             tpgrid = $(this).attr("id");
-            change_mobile_grid_state(tpgrid,grid,container,height);
+            change_mobile_grid_state(tpgrid,grid,containers,height);
           }
       });
   }
@@ -261,7 +276,7 @@ $(document).ready(function(){
 
 
   grid = $(".wallpaper.grid");
-  container = grid.children();
+  containers = grid.children();
   width = $(window).width();
   height = $(window).height();
 
@@ -276,16 +291,18 @@ $(document).ready(function(){
 
 
   // Auto-set red icon for last grid icon
-  $("#" + tpgrid)
-  .attr("src","assets/red_" + tpgrid + "_grid.png");
+  $("#" + tpgrid).attr("src","assets/red_" + tpgrid + "_grid.png");
 
+  //Update grid
   update_grid();
+  setTimeout(update_grid,50);
 
   // Resize trigger
   $(window).resize(function(){
     width = $(window).width();
     height = $(window).height();
     update_grid();
+    setTimeout(update_grid,50);
   });
 
 
@@ -294,20 +311,23 @@ $(document).ready(function(){
   // On icon grid click
   $(".grid.panel").children().click(function(event){
 
-      // Reset all grid assets color to blue
-      $(".grid.panel").children().each(function(){
-          $(this).attr("src","assets/blue_" + $(this).attr("id") + "_grid.png");
-      });
+    // Reset all grid assets color to blue
+    $(".grid.panel").children().each(function(){
+        $(this).attr("src","assets/blue_" + $(this).attr("id") + "_grid.png");
+    });
 
-      width = $(window).width();
-      height = $(window).height();
-      tpgrid = $(this).attr("id");
-      localStorage.setItem("tpgrid",tpgrid);
+    width = $(window).width();
+    height = $(window).height();
+    tpgrid = $(this).attr("id");
 
-      // Change button to active form
-      $(this).attr("src","assets/red_" + tpgrid + "_grid.png");
+    //Session for grid type
+    localStorage.setItem("tpgrid",tpgrid);
 
-      update_grid();
+    // Change button to active form
+    $(this).attr("src","assets/red_" + tpgrid + "_grid.png");
+
+    update_grid();
+    setTimeout(update_grid,5);
 
   });
 
