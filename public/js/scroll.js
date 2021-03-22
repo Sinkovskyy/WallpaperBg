@@ -99,6 +99,15 @@ function upButtonListener()
     });
 }
 
+function linkChanged(tag)
+{
+    window.history.pushState({page: "another"}, "another page", tag);
+    $(".grid.wallpaper").empty();
+    page = 0;
+    access = true;
+    imageRequest();
+}
+
 
 $(document).ready(function(){
 
