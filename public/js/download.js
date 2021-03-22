@@ -14,4 +14,5 @@ $(document).ready(function()
         downloadLink.download = fileName;
         downloadLink.click();
     });
+
 });

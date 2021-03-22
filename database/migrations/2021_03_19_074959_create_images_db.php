@@ -17,6 +17,7 @@ class CreateImagesDb extends Migration
         Schema::create('images_db', function (Blueprint $table) {
             $table->id();
             $table->string("tags");
+            $table->integer("downloaded_times");
         });
         DB::statement("ALTER TABLE images_db ADD image LONGBLOB");
         DB::statement("ALTER TABLE images_db ADD compressed_image LONGBLOB");

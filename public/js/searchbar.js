@@ -1,8 +1,18 @@
 var isMobileButtonActive = false;
 
+
+function ifUserNotInHomePage(tag = "")
+{
+    if($(location).attr('pathname').substring(0,6) == "/page/")
+    {
+        window.location =  $(location).attr('protocol') + "//" + $(location).attr('hostname') + "/" + tag;
+    }
+}
+
 // if clicked on active pc button and mobile
 function search(input)
 {
+    ifUserNotInHomePage(input.val());
     linkChanged(input.val());
     input.val("");
 }
@@ -50,6 +60,9 @@ $(document).ready(function() {
   $(".search.button").click(function(){
 
     // search mobile animation button listener
+
+
+    ifUserNotInHomePage();
 
     if(wndw.width() <= width + 37)
     {
