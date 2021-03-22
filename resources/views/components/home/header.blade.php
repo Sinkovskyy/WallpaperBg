@@ -34,18 +34,6 @@
             <button type="button" class="search button" name="button">
                 <span class = "search button"></span></button>
         </div>
-        <div class="lgbar">
-          <div class="lgwrapper">
-          <div class="flexVertical">
-            <div id="lg">En</div>
-            <div class="dropdown-content">
-              <div class="lg_button_option"><a href="#"><img src="{{asset('assets\English.png')}}" alt=""></a></div>
-              <div class="lg_button_option"><a href="#"><img src="{{asset('assets\Ukrainian.png')}}" alt=""></a></div>
-            </div>
-          </div>
-            <img src="{{asset('assets\arrow.png')}}" id="arrow" alt="">
-          </div>
-        </div>
       </div>
       <div class="wrapper active">
         <div class="searchbar active">
