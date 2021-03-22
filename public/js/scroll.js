@@ -99,7 +99,8 @@ function upButtonListener()
     });
 }
 
-// Tag
+
+// Tag navigation listener
 function linkChanged(tag)
 {
     window.history.pushState({page: "another"}, "another page", tag);

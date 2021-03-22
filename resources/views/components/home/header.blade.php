@@ -30,8 +30,9 @@
           </a>
         </div>
         <div class="searchbar">
-            <input class="search input" placeholder="Search"/>
-            <button type="button" class="search button"name="button"><span class = "search button"></span></button>
+            <input class="search input" id="searchInput" placeholder="Search"/>
+            <button type="button" class="search button" id="searchInput" name="button">
+                <span class = "search button"></span></button>
         </div>
         <div class="lgbar">
           <div class="lgwrapper">
@@ -49,7 +50,7 @@
       <div class="wrapper active">
         <div class="searchbar active">
           <button type="button" class="search button"name="button"><span class = "search button"></span></button>
-          <input class="search input" placeholder="Search"/>
+          <input class="search input" id="searchInputMobile" placeholder="Search"/>
           <button type="button" class="cancel button"name="button"><span class ="cancel button"></span></button>
         </div>
       </div>
