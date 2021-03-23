@@ -1,26 +1,54 @@
+
+function changeVisualSortType()
+{
+    $(".sort.button span.category.sort").text(localStorage.sortType);
+}
+
+
+
 $(document).ready(function() {
 
-  $(".panel").click(function(){
-    var menu = $(this).children(".dropdown-content");
-    var arrow =  $(this).children(".button").children(".sort.arrow");
 
-    if(menu.css("opacity") == "1")
+    // Check if sortType session exist
+    if(localStorage.getItem("sortType") === null)
     {
-      menu.css({
-        "opacity":"0",
-        "z-index":"-1"
-      });
-      arrow.css({"transform":"rotate(0deg)"});
+        localStorage.setItem("sortType","Newest");
     }
-    else
+    changeVisualSortType();
+
+
+    // When user click on sort drop-down panel option
+    $("#sort-drop-down .lg_button_option").click(function()
     {
-      menu.css({
-        "opacity":"1",
-        "z-index":"1"
-      });
-      arrow.css({"transform":"rotate(180deg)"});
-    }
-  });
+        localStorage.setItem('sortType',$(this).children().text());
+        changeVisualSortType();
+        linkChanged(window.location.pathname.substr(1));
+    });
+
+
+
+
+    $(".panel").click(function(){
+        var menu = $(this).children(".dropdown-content");
+        var arrow =  $(this).children(".button").children(".sort.arrow");
+
+        if(menu.css("opacity") == "1")
+        {
+        menu.css({
+            "opacity":"0",
+            "z-index":"-1"
+        });
+        arrow.css({"transform":"rotate(0deg)"});
+        }
+        else
+        {
+        menu.css({
+            "opacity":"1",
+            "z-index":"1"
+        });
+        arrow.css({"transform":"rotate(180deg)"});
+        }
+    });
 
 
 });

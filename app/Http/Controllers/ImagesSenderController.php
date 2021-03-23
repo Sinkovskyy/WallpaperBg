@@ -25,8 +25,9 @@ class ImagesSenderController extends Controller
         $limit = 21;
         $tag = substr(request()->input('tag'),1);
         $page = intval(request()->input('page'));
+        $sortBy = request()->input('sort');
         if($tag == "all") $tag = "";
-        $images = Image::getImagesByTags([$tag],$limit,offset:$limit*$page);
+        $images = Image::getImagesByTags([$tag],$sortBy,$limit,offset:$limit*$page);
         $images = $this->encodeToJson($images);
         return response()->json([
             'images' => $images,

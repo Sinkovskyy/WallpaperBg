@@ -20,28 +20,53 @@ class Image extends Model
     }
 
     // Get images by tags
-    public static function getImagesByTags($tags = [], $limit = 42, $excId = '',$offset = 0)
+    public static function getImagesByTags($tags = [],$sortBy = "Newest", $limit = 42, $excId = '',$offset = 0)
     {
         $images = self::where('Tags','regexp',implode('|',$tags))
         ->where('id','!=',$excId)
         ->offset($offset)
-        ->limit($limit)->get();
+        ->limit($limit);
+        $images = self::sortBy($images,$sortBy)->get();
         return $images;
     }
 
 
+
+
+    private static function sortBy($images,$sortBy)
+    {
+        if($sortBy == "Newest")
+        {
+            $images = $images->orderBy('id','desc');
+        }
+        if($sortBy == "Oldest")
+        {
+            $images = $images->orderBy('id','asc');
+        }
+        if($sortBy == "Popular")
+        {
+            $images = $images->orderBy('downloaded_times','desc');
+        }
+        if($sortBy == "Unpopular")
+        {
+            $images = $images->orderBy('downloaded_times','asc');
+        }
+        return $images;
+    }
+
     // Get just compressed imagess by tags
-    public static function getCompressedImagesByTags($tags = [], $limit = 42, $excId = '',$offset = 0)
+    public static function getCompressedImagesByTags($tags = [],$sortBy = "Newest", $limit = 42, $excId = '',$offset = 0)
     {
         $images = self::select('id','tags','compressed_image')->where('tags','regexp',implode('|',$tags))
         ->where('id','!=',$excId)
         ->offset($offset)
-        ->limit($limit)->get();
+        ->limit($limit);
+        $images = self::sortBy($images,$sortBy)->get();
         return $images;
     }
 
 
-    //Get image downloaded time
+    //Get image downloaded times
     public static function getImageDownloadedTimes($id)
     {
         $times = self::select('downloaded_times')->where('id',$id)->get();
@@ -49,6 +74,7 @@ class Image extends Model
     }
 
 
+    //Update image downloaded times
     public static function updateImageDownloadedTimes($id,$times)
     {
         DB::table('images_db')->where('id',$id)->update(['downloaded_times'=>$times]);

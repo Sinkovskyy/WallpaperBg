@@ -13,7 +13,7 @@ $.ajaxSetup({
     }
 });
 
-
+// Change category name
 function changeCategoryName()
 {
     var tag = window.location.pathname.substr(1),
@@ -30,6 +30,7 @@ function changeCategoryName()
 
 }
 
+// Append new images in grid
 function fillGridByImages(images)
 {
     var img;
@@ -40,6 +41,7 @@ function fillGridByImages(images)
     });
     update_grid();
 }
+
 // Send post request for receiving images
 function imageRequest()
 {
@@ -50,10 +52,12 @@ function imageRequest()
         {
             "page":page,
             "tag":window.location.pathname,
+            "sort": localStorage.sortType,
         },
         dataType: "json",
         success: function (response)
         {
+            console.log(response);
             fillGridByImages(response["images"]);
             changeCategoryName();
             page++;
