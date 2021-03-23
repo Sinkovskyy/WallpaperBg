@@ -57,7 +57,6 @@ function imageRequest()
         dataType: "json",
         success: function (response)
         {
-            console.log(response);
             fillGridByImages(response["images"]);
             changeCategoryName();
             page++;

@@ -10,9 +10,9 @@
                 $all += $data->amount;
             }
         ?>
-        <div class="lg_button_option"><a href="/all">All</a></div>
+        <div class="lg_button_option" onclick="javascript:linkChanged('all');"><a href="/all">All</a></div>
         @foreach($tags as $key => $data)
-          <div class="lg_button_option"><a href="javascript:linkChanged('{{$data->tag}}');">{{ucfirst($data->tag)}}</a></div>
+          <div class="lg_button_option" onclick="javascript:linkChanged('{{$data->tag}}');"><a href="javascript:linkChanged('{{$data->tag}}');">{{ucfirst($data->tag)}}</a></div>
         @endforeach
 
     </div>
