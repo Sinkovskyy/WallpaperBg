@@ -7,9 +7,9 @@
           @include('components.home.categoryPanelMobile')
 
           <div class="grid panel">
-            <img id="two" src="assets\blue_two_grid.png" alt="">
-            <img id="four" src="assets\blue_four_grid.png" alt="">
-            <img id="nine" src="assets\blue_nine_grid.png" alt=""></div>
+            <img id="two" src="{{asset('assets\blue_two_grid.png')}}" alt="">
+            <img id="four" src="{{asset('assets\blue_four_grid.png')}}" alt="">
+            <img id="nine" src="{{asset('assets\blue_nine_grid.png')}}" alt=""></div>
         </div>
       </div>
 

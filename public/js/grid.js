@@ -291,7 +291,7 @@ $(document).ready(function(){
 
 
   // Auto-set red icon for last grid icon
-  $("#" + tpgrid).attr("src","assets/red_" + tpgrid + "_grid.png");
+  $("#" + tpgrid).attr("src","public/assets/red_" + tpgrid + "_grid.png");
 
   //Update grid
   update_grid();
@@ -313,7 +313,7 @@ $(document).ready(function(){
 
     // Reset all grid assets color to blue
     $(".grid.panel").children().each(function(){
-        $(this).attr("src","assets/blue_" + $(this).attr("id") + "_grid.png");
+        $(this).attr("src","public/assets/blue_" + $(this).attr("id") + "_grid.png");
     });
 
     width = $(window).width();
@@ -324,7 +324,7 @@ $(document).ready(function(){
     localStorage.setItem("tpgrid",tpgrid);
 
     // Change button to active form
-    $(this).attr("src","assets/red_" + tpgrid + "_grid.png");
+    $(this).attr("src","public/assets/red_" + tpgrid + "_grid.png");
 
     update_grid();
     setTimeout(update_grid,5);

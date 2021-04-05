@@ -12,7 +12,7 @@ class PageController extends Controller
     {
         $limit = 6;
         $image = Image::getImageById($id);
-        $rec = Image::getImagesByTags(explode(' ',$image->tags),limit:$limit,excId:$id);
+        $rec = Image::getImagesByTags(explode(' ',$image->tags),null,$limit,$id,null);
         return view('page',['image' => $image,'rec' => $rec]);
     }
 

@@ -14,6 +14,7 @@ class Tag extends Model
     // Count images by tag
     private static function imagesAmount($tag)
     {
+        if($tag == "all") $tag = ".*";
         $amount = Image::where('Tags','regexp',$tag)->count();
         return $amount;
     }
@@ -27,6 +28,7 @@ class Tag extends Model
         {
             $amounts[$i] = self::imagesAmount($tags[$i]->tag);
         }
+        $amounts[$tags->count()] = self::imagesAmount("all");
         return $amounts;
     }
 

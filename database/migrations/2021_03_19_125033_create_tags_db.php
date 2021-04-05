@@ -15,7 +15,7 @@ class CreateTagsDb extends Migration
     {
         Schema::create('tags_db', function (Blueprint $table) {
             $table->id();
-            $table->string('tag');
+            $table->string('tag')->unique();;
         });
     }
 

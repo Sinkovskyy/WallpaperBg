@@ -15,7 +15,6 @@ class HomeController extends Controller
 
     public function loadByTag($tag)
     {
-        if ($tag == "all") $tag = "";
         $images = Image::getImagesByTags([$tag]);
         $tags = Tag::getTags();
         return view('home',['tags'=>$tags,'images'=>$images]);

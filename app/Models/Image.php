@@ -22,7 +22,15 @@ class Image extends Model
     // Get images by tags
     public static function getImagesByTags($tags = [],$sortBy = "Newest", $limit = 42, $excId = '',$offset = 0)
     {
-        $images = self::where('Tags','regexp',implode('|',$tags))
+        if ($tags[0] == "all")
+        {
+            $reg = ".*";
+        }
+        else 
+        {
+            $reg = implode('|',$tags); 
+        }
+        $images = self::where('Tags','regexp',$reg)
         ->where('id','!=',$excId)
         ->offset($offset)
         ->limit($limit);
@@ -32,7 +40,7 @@ class Image extends Model
 
 
 
-
+    // Sorting images by types
     private static function sortBy($images,$sortBy)
     {
         if($sortBy == "Newest")
@@ -57,6 +65,14 @@ class Image extends Model
     // Get just compressed imagess by tags
     public static function getCompressedImagesByTags($tags = [],$sortBy = "Newest", $limit = 42, $excId = '',$offset = 0)
     {
+        if ($tags[0] == "all")
+        {
+            $reg = ".*";
+        }
+        else 
+        {
+            $reg = implode('|',$tags); 
+        }
         $images = self::select('id','tags','compressed_image')->where('tags','regexp',implode('|',$tags))
         ->where('id','!=',$excId)
         ->offset($offset)
